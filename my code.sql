@@ -1,11 +1,11 @@
 -- 1
 select* from store;
 select* from city;
-select store.store_id, city.city, country.country
-from store
-inner join address on store.address_id = address.address_id
-inner join city on address.city_id = city.city_id
-inner join country on city.country_id = country.country_id;
+select store_id, city, country
+from country
+join city on country.country_id=city.country_id
+join address on city.city_id=address.city_id
+join store on address.address_id=store.address_id;
 
 -- 2
 select store.store_id, SUM(payment.amount) as total_sales
