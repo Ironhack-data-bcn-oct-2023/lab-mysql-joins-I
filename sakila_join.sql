@@ -9,7 +9,6 @@ SELECT store_id, city,country
     JOIN country ON city.country_id = country.country_id;
 
 -- 2. Write a query to display how much business, in dollars, each store brought in.
-
 SELECT store.store_id,
        SUM(amount) AS business
 	FROM store
@@ -17,7 +16,7 @@ SELECT store.store_id,
     JOIN rental ON inventory.inventory_id = rental.inventory_id
     JOIN payment ON rental.rental_id = payment.rental_id
     GROUP BY store.store_id;
-
+    
 -- 3. What is the average running time of films by category?
 SELECT category.name,
 	   AVG(length) as average_duration
@@ -46,11 +45,9 @@ SELECT inventory.film_id, film.title, COUNT(*) rental_count
     -- Asnwer: Bucket Brotherhood, Rocketter Mother, Forward Temple, Grit Clockwork, Juggler Hardly
 
 -- 6. List the top five genres in gross revenue in descending order.
-SELECT
-    category.name AS genre,
+SELECT category.name AS genre,
     SUM(payment.amount) AS gross_revenue
-FROM
-    film
+FROM film
     JOIN film_category ON film.film_id = film_category.film_id
     JOIN category ON film_category.category_id = category.category_id
     JOIN inventory ON film.film_id = inventory.film_id
@@ -65,7 +62,7 @@ LIMIT 5;
 SELECT film.title AS title,
 	CASE
 		WHEN rental.rental_id = 1 THEN "Available"
-        ELSE "Not available"
+		ELSE "Not available"
 	END AS availability
     FROM film
 		JOIN inventory ON film.film_id = inventory.film_id
