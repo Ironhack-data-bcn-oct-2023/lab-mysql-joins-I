@@ -7,6 +7,9 @@ In this lab, you will be using the [Sakila](https://dev.mysql.com/doc/sakila/en/
 ### Instructions
 
 1. Write a query to display for each store its store ID, city, and country.
+country_id, country, last_update
+city_id, city, country_id, last_update
+store_id, manager_staff_id, address_id, last_update
 2. Write a query to display how much business, in dollars, each store brought in.
 3. What is the average running time of films by category?
 4. Which film categories are longest?
