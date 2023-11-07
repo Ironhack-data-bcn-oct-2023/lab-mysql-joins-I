@@ -59,6 +59,19 @@ LIMIT 5;
 	-- Answer: Sports, Sci-Fi, Animation, Drama, Comedy
 
 -- 7. Is "Academy Dinosaur" available for rent from Store 1?
+	-- this answer the question: 
+SELECT film.title, rental.rental_date, rental.return_date
+	 FROM film
+		JOIN inventory
+			ON film.film_id = inventory.film_id
+		JOIN rental
+			ON inventory.inventory_id = rental.inventory_id
+		WHERE film.title= "Academy Dinosaur"
+			AND store_id = 1
+			ORDER BY rental.rental_date DESC
+		LIMIT 1;
+        
+-- this let us know if it is available:
 SELECT film.title AS title,
 	CASE
 		WHEN rental.rental_id = 1 THEN "Available"
